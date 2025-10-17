@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YOUR NAME — Fashion Designer Portfolio</title>
+  <meta name="description" content="Fashion designer portfolio and lookbook — couture, ready-to-wear, and styling projects." />
+  <meta name="theme-color" content="#111827" />
+  <!-- Social preview -->
+  <meta property="og:title" content="YOUR NAME — Fashion Designer" />
+  <meta property="og:description" content="Portfolio, lookbooks, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/0?v=4" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <style>
+    :root{
+      --bg:#0b0d13; --surface:#121520; --muted:#9aa3b2; --text:#eef2f7; --brand:#ec4899; --brand-2:#8b5cf6; --ring:rgba(236,72,153,.28)
+    }
+    :root.light{ --bg:#fafafa; --surface:#ffffff; --muted:#475569; --text:#0b1020; --brand:#db2777; --brand-2:#6d28d9; --ring:rgba(236,72,153,.2)}
+    *{box-sizing:border-box}
+    body{margin:0; font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto; background:
+      radial-gradient(800px 400px at 0% -10%, rgba(139,92,246,.15), transparent 60%),
+      radial-gradient(900px 500px at 120% 10%, rgba(236,72,153,.12), transparent 60%), var(--bg); color:var(--text)}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1120px,92%); margin:0 auto}
+    .nav{position:sticky; top:0; z-index:30; backdrop-filter:saturate(160%) blur(10px); background:color-mix(in oklab, var(--bg) 82%, transparent); border-bottom:1px solid color-mix(in oklab, var(--text) 12%, transparent)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px}
+    .brand{font-weight:800; letter-spacing:.3px}
+    .nav-links{display:flex; gap:18px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:white; box-shadow:0 10px 28px -18px var(--ring)}
+    .btn.ghost{background:transparent; color:var(--text)}
+    .btn:hover{transform:translateY(-1px)}
+
+    header.hero{padding:56px 0 16px}
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:var(--surface); border:1px solid color-mix(in oklab, var(--text) 10%, transparent); color:var(--muted); font-size:13px}
+    h1{font-size:clamp(28px,5vw,46px); line-height:1.15; margin:12px 0 6px}
+    .lead{font-size:18px; color:var(--muted)}
+
+    section{padding:36px 0}
+    h2{font-size:22px; margin:0 0 8px}
+    .muted{color:var(--muted); font-size:14px}
+
+    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--surface) 96%, transparent), var(--surface)); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:18px; padding:18px}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    .col-4{grid-column:span 4} .col-6{grid-column:span 6} .col-8{grid-column:span 8} .col-12{grid-column:span 12}
+    @media (max-width:900px){.col-4,.col-6,.col-8{grid-column:span 12}}
+
+    /* gallery */
+    .filters{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{padding:8px 12px; border-radius:999px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); background:var(--surface); color:var(--muted); cursor:pointer; user-select:none}
+    .chip.active{background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:white}
+
+    .gallery{columns:1; column-gap:18px}
+    @media (min-width:640px){.gallery{columns:2}}
+    @media (min-width:980px){.gallery{columns:3}}
+    .tile{break-inside:avoid; margin:0 0 18px; position:relative; overflow:hidden; border-radius:16px; border:1px solid color-mix(in oklab, var(--text) 10%, transparent); background:#000}
+    .tile img{width:100%; height:auto; display:block; transition:transform .35s ease}
+    .tile:hover img{transform:scale(1.03)}
+    .tile .meta{position:absolute; inset:auto 10px 10px 10px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.55)); color:#fff; padding:12px; border-radius:12px; font-size:13px}
+
+    /* lightbox */
+    .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.8); display:none; align-items:center; justify-content:center; z-index:60; padding:24px}
+    .lightbox.open{display:flex}
+    .lb-inner{max-width:min(1100px,95vw); max-height:90vh}
+    .lb-caption{color:#fff; margin-top:10px; text-align:center; font-size:14px}
+
+    footer{padding:40px 0 60px; border-top:1px solid color-mix(in oklab, var(--text) 12%, transparent); margin-top:36px}
+    .avatar{width:120px; height:120px; border-radius:20px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); box-shadow:0 16px 48px -24px var(--ring); object-fit:cover}
+    :focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:8px}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">YOUR NAME</div>
+      <div class="nav-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">Toggle theme</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="pill">Fashion Designer · Ready for commissions</span>
+        <h1>Hi, I’m <span style="background:linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; color:transparent;">YOUR NAME</span></h1>
+        <p class="lead">I create contemporary womenswear and couture pieces that blend clean architectural lines with artisanal finishes. Explore my latest collections, runway looks, and bespoke commissions.</p>
+        <div style="display:flex; gap:10px; margin-top:16px;">
+          <a class="btn" href="#portfolio">View portfolio</a>
+          <a class="btn ghost" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn ghost" href="https://www.instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div class="card" style="display:flex; gap:16px; align-items:center;">
+        <img class="avatar" src="/assets/profile.jpg" alt="Portrait of YOUR NAME" />
+        <div>
+          <div class="muted">Highlights</div>
+          <ul style="margin:8px 0 0; padding-left:18px;">
+            <li>Capsule: <em>City Bloom</em> — SS25</li>
+            <li>Shortlisted — Emerging Designer Award 2024</li>
+            <li>Specialty: draping, tailoring, textile development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- PORTFOLIO / LOOKBOOK -->
+    <section id="portfolio">
+      <div class="grid" style="align-items:end">
+        <div class="col-8">
+          <h2>Portfolio</h2>
+          <p class="muted">Filter by collection or discipline, then click an image to view full screen.</p>
+        </div>
+        <div class="col-4" style="text-align:right">
+          <div class="filters" role="tablist" aria-label="Portfolio filters">
+            <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="chip" data-filter="couture" role="tab">Couture</button>
+            <button class="chip" data-filter="rtw" role="tab">Ready‑to‑Wear</button>
+            <button class="chip" data-filter="illustration" role="tab">Illustration</button>
+            <button class="chip" data-filter="styling" role="tab">Styling</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <!-- Example tiles (replace src with your images in /assets/ ) -->
+        <figure class="tile" data-category="couture" data-title="Petal Gown" data-year="2025">
+          <img loading="lazy" src="/assets/look1.jpg" alt="Couture petal gown on model" />
+          <figcaption class="meta"><strong>Petal Gown</strong> · Couture · 2025</figcaption>
+        </figure>
+        <figure class="tile" data-category="rtw" data-title="City Bloom Look 02" data-year="2025">
+          <img loading="lazy" src="/assets/look2.jpg" alt="Ready-to-wear City Bloom look" />
+          <figcaption class="meta"><strong>City Bloom — 02</strong> · RTW · 2025</figcaption>
+        </figure>
+        <figure class="tile" data-category="illustration" data-title="Silhouette Study" data-year="2024">
+          <img loading="lazy" src="/assets/illust1.jpg" alt="Marker fashion illustration" />
+          <figcaption class="meta"><strong>Silhouette Study</strong> · Illustration · 2024</figcaption>
+        </figure>
+        <figure class="tile" data-category="styling" data-title="Editorial: Glass & Steel" data-year="2024">
+          <img loading="lazy" src="/assets/editorial1.jpg" alt="Editorial styling shoot" />
+          <figcaption class="meta"><strong>Glass & Steel</strong> · Styling · 2024</figcaption>
+        </figure>
+        <figure class="tile" data-category="rtw" data-title="City Bloom Look 05" data-year="2025">
+          <img loading="lazy" src="/assets/look5.jpg" alt="RTW look 05" />
+          <figcaption class="meta"><strong>City Bloom — 05</strong> · RTW · 2025</figcaption>
+        </figure>
+        <figure class="tile" data-category="couture" data-title="Bias Cut Dress" data-year="2023">
+          <img loading="lazy" src="/assets/couture2.jpg" alt="Bias cut dress" />
+          <figcaption class="meta"><strong>Bias Cut Dress</strong> · Couture · 2023</figcaption>
+        </figure>
+      </div>
+
+      <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+        <div class="lb-inner">
+          <img id="lbImg" alt="Expanded portfolio image" />
+          <div class="lb-caption" id="lbCap"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="grid">
+        <div class="col-8">
+          <h2>About</h2>
+          <p class="muted">Bio & approach</p>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card col-8">
+          <p>YOUR NAME is a fashion designer focused on modern silhouettes, sustainability, and tactile surfaces. Work spans couture pieces for private clients and ready‑to‑wear capsules. Comfortable from concept sketches and draping through to patternmaking, fittings, and production handover.</p>
+          <ul>
+            <li>Strengths: draping, tailoring, textile manipulation, trims/sourcing</li>
+            <li>Software: CLO3D/Marvelous, Adobe Illustrator, Procreate</li>
+            <li>Areas: womenswear, eveningwear, editorial styling</li>
+          </ul>
+        </article>
+        <aside class="card col-4">
+          <div class="muted">Press / Exhibitions</div>
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>Runway — <em>KL Fashion Week</em> (2024)</li>
+            <li>Shortlist — Emerging Designer Award (2024)</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="grid">
+        <div class="col-8">
+          <h2>Contact</h2>
+          <p class="muted">For commissions, collaborations, or internships.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <form class="card col-8" name="contact" onsubmit="event.preventDefault(); alert('Thanks! I\'ll reply soon.');">
+          <label>Name<br /><input required type="text" placeholder="Your name" style="width:100%; padding:10px 12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); background:var(--surface); color:var(--text);" /></label>
+          <br />
+          <label>Email<br /><input required type="email" placeholder="you@example.com" style="width:100%; padding:10px 12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); background:var(--surface); color:var(--text);" /></label>
+          <br />
+          <label>Message<br /><textarea required rows="5" placeholder="Project brief, timeline, budget…" style="width:100%; padding:10px 12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--text) 12%, transparent); background:var(--surface); color:var(--text);"></textarea></label>
+          <br />
+          <button class="btn" type="submit">Send</button>
+          <p class="muted">Email: <a href="mailto:you@example.com">you@example.com</a> · Instagram: <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noreferrer">@YOUR_INSTAGRAM</a></p>
+        </form>
+        <aside class="card col-4">
+          <div class="muted">Download</div>
+          <p><a class="btn" href="/assets/YOURNAME_portfolio.pdf" download>Portfolio PDF</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <small class="muted">© <span id="year"></span> YOUR NAME. All rights reserved.</small>
+      <a class="btn ghost" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved==='light') root.classList.add('light');
+    document.getElementById('themeToggle').addEventListener('click',()=>{
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light')?'light':'dark');
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filtering
+    const chips=[...document.querySelectorAll('.chip')];
+    const tiles=[...document.querySelectorAll('.tile')];
+    chips.forEach(ch=>ch.addEventListener('click',()=>{
+      chips.forEach(c=>c.classList.remove('active')); ch.classList.add('active');
+      const f=ch.dataset.filter;
+      tiles.forEach(t=>{ t.style.display = (f==='all' || t.dataset.category===f) ? '' : 'none'; });
+    }));
+
+    // Lightbox
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lbImg');
+    const lbCap=document.getElementById('lbCap');
+    document.getElementById('gallery').addEventListener('click', e=>{
+      const fig=e.target.closest('figure'); if(!fig) return;
+      const img=fig.querySelector('img');
+      lbImg.src=img.currentSrc || img.src; lbCap.textContent=`${fig.dataset.title} · ${fig.dataset.year}`; lb.classList.add('open');
+    });
+    lb.addEventListener('click',()=> lb.classList.remove('open'));
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open');});
+  </script>
+</body>
+</html>
